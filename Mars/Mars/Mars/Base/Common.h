@@ -14,7 +14,7 @@
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
-
+#import "UIView+ext.h"
 
 
 #endif /* Common_h */
