@@ -25,8 +25,8 @@
 
 - (void)setFrame:(CGRect)frame {
 
-    [super setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 340)];
-
+    [super setFrame:frame];
+    
     _HeadView.frame = CGRectMake(0, 0, self.width, 150);
     _HeadView.backgroundColor = [UIColor redColor];
     
@@ -59,20 +59,22 @@
         NSString *name = _bizareaModel.name;
         
         if (englishName.length || name.length) {
-            UILabel *labelEnglishName = [[UILabel alloc] initWithFrame:CGRectMake(0, 65, _HeadView.width, 20)];
-            UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(0, 85, _HeadView.width, 15)];
+            UILabel *labelEnglishName = [[UILabel alloc] initWithFrame:CGRectMake(0, 55, _HeadView.width, 30)];
+            UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(0, 95, _HeadView.width, 15)];
             
             labelEnglishName.text = englishName;
+            labelEnglishName.textColor = [UIColor whiteColor];
             labelEnglishName.textAlignment = NSTextAlignmentCenter;
             labelEnglishName.numberOfLines = 1;
-            labelEnglishName.backgroundColor = [UIColor clearColor];
-            labelEnglishName.font = [UIFont systemFontOfSize:18];
-            
+            labelEnglishName.font = [UIFont boldSystemFontOfSize:35];
+//            labelEnglishName.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.2];
+
             labelName.textAlignment = NSTextAlignmentCenter;
             labelName.text = name;
+            labelName.textColor = [UIColor whiteColor];
             labelName.numberOfLines = 1;
-            labelName.backgroundColor = [UIColor clearColor];
-            labelName.font = [UIFont systemFontOfSize:16];
+//            labelName.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.2];
+            labelName.font = [UIFont boldSystemFontOfSize:25];
             
             [_HeadView addSubview:labelEnglishName];
             [_HeadView addSubview:labelName];
@@ -84,7 +86,11 @@
             view.hidden = YES;
         }
         
-        for (int i = 0; i < _bizareaModel.storesHeadpic.count; i++) {
+        NSInteger countHeadPic = _bizareaModel.storesHeadpic.count;
+        
+        countHeadPic = countHeadPic > 5 ? 5 : countHeadPic;
+        
+        for (int i = 0; i < countHeadPic; i++) {
             
             ((UIImageView *)iconArr[i]).hidden = NO;
             
@@ -99,13 +105,15 @@
                 
                 [((UIImageView *)iconArr[i]) addSubview:label];
                 
-                label.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.8];
+                label.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7];
 
                 label.text = storeEnglishName.length > 0 ? storeEnglishName :storeName;
                 
                 label.textAlignment = NSTextAlignmentCenter;
                 
                 label.font = [UIFont systemFontOfSize:14];
+                
+                label.textColor = [UIColor whiteColor];
                 
                 label.numberOfLines = 1;
                 
