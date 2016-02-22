@@ -8,7 +8,7 @@
 
 #import "CommentView.h"
 #import "CommentModel.h"
-#import "UIImageView+WebCache.h"
+
 
 @interface CommentView ()
 @property (weak, nonatomic) IBOutlet UIImageView *commentView;
@@ -42,8 +42,6 @@
         _nickName.text = commentModel.nickName;
         
         _nickName.height = 40;
-       
-        //找不到_line的图片,用白色背景代替
 
         _line.backgroundColor = [UIColor whiteColor];
         

@@ -10,8 +10,10 @@
 
 @class BizareaModel;
 
+typedef void(^BizereaStoreShowBlock) (NSDictionary *dic);
+
 @interface BizareaView : UIView
 
 @property (nonatomic,strong)BizareaModel *bizareaModel;
-
+@property (nonatomic,copy)BizereaStoreShowBlock bizereaStoreShowBlock;
 @end

@@ -12,5 +12,5 @@
 
 @property (nonatomic,copy)NSString *storeID;    //商铺的对应id
 @property (nonatomic,copy)NSString *cover;      //首页主页面的图片地址
-
+@property (nonatomic,copy)NSString *storeDescription;
 @end

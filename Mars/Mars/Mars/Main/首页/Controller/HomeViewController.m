@@ -7,13 +7,15 @@
 //
 
 #import "HomeViewController.h"
-#import "UIImageView+WebCache.h"
 #import "ToplistModel.h"
 #import "BizareaModel.h"
 #import "CommentModel.h"
+#import "ToplistIndexModel.h"
 #import "BizareaView.h"
 #import "CommentView.h"
 #import "ToplistView.h"
+#import "TopicInfoController.h"
+#import "BizareaInfoController.h"
 
 static NSString *bizareaIdentify = @"bizarea";
 static NSString *commentIdentify = @"comment";
@@ -32,25 +34,16 @@ static NSString *commentIdentify = @"comment";
 
 
 /**
- *  主页面中scrollview的图片加载完毕后,应当将图片存起来,下次从下方拖动回第一行时再次加载回来,现在有个问题就是页面拉下去拉回来后,原来加载的图片没有了
  *
+ *
+ 1 http://www.yohomars.com/api/v1/topic/topic/info?app_version=1.1.0&client_secret=6f3d06a5702153f757d8ce1313087e76&client_type=iphone&id=125&os_version=9.2.1&screen_size=320x480&session_code=010024f1926716510bd396baf63f5034&v=1
+ 这段网址中session_code要经常通过抓包更新,否则会出错.
+ 2检查所有代码,保证是在主线程中进行ui刷新,防止不定期的崩溃
+ 
  *  @param storeID <#storeID description#>
  *
  *  @return <#return value description#>
  */
-
-//- (NSString *)clientSecret:(NSString *)storeID {
-//    
-//    NSDictionary *dicConfig = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ClientSecretShangHai.plist" ofType:nil]];
-//    
-//    NSString *str = dicConfig[storeID];
-//    
-//    if (str.length == 0) {
-//        NSLog(@"出现了未知storeid以及对应密码");
-//    }
-//    
-//    return str.length > 0 ? str : nil;
-//}
 
 - (void)mainViewToplistDataWithUrl:(NSURL *)url {
     
@@ -72,33 +65,24 @@ static NSString *commentIdentify = @"comment";
         if (dic) {
             NSArray *list = [dic[@"data"] objectForKey:@"list"];
             if (list) {
-                
-                for (int i = 0; i < 6; i++) {
-//                    NSLog(@"%@",[list[i] objectForKey:@"id"]);
-                    NSString *str = [list[i] objectForKey:@"cover"];
-                    
-                    str = [self imageUrlDeleteImageView:str];
+//                NSInteger count = list.count > 6 ? 6 : list.count;
+                for (int i = 0; i < 5; i++) {
                     
                     ToplistModel *model = [[ToplistModel alloc] init];
                     
                     model.storeID = [list[i] objectForKey:@"id"];
+                    NSString *str = [list[i] objectForKey:@"cover"];
+                    str = [self imageUrlDeleteImageView:str];
                     model.cover = str;
+                    model.storeDescription = [list[i] objectForKey:@"description"];
                     
                     [_topicModelArr addObject:model];
-                    
-//                    NSURL *url = [NSURL URLWithString:str];
-//                    
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        
-//                        [((UIImageView *)[self.view viewWithTag:100 + i]) sd_setImageWithURL:url];
-//                    });
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        [_tableView reloadData];
-                        NSLog(@"mainViewToplistDataWithUrl加载完数据刷新tableview");
-                    });
-//                    
                 }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [_tableView reloadData];
+                    NSLog(@"mainViewToplistDataWithUrl加载完数据刷新tableview");
+                });
             }
         }
         
@@ -132,12 +116,20 @@ static NSString *commentIdentify = @"comment";
                     model.bizareaID = [list2[i] objectForKey:@"id"];
                     model.name = [list2[i] objectForKey:@"name"];
                     model.englishName = [list2[i] objectForKey:@"english_name"];
+                    model.placeDesc = [list2[i] objectForKey:@"description"];
                     NSString *str = [list2[i] objectForKey:@"headpic"];
                     model.headPic = [self imageUrlDeleteImageView:str];
-                    
+
                     NSMutableArray *storesEnglishName = [NSMutableArray array];
                     NSMutableArray *storesHeadPic = [NSMutableArray array];
                     NSMutableArray *storesName = [NSMutableArray array];
+                    NSMutableArray *storesTagName = [NSMutableArray array];
+                    NSMutableArray *storesScore = [NSMutableArray array];
+                    NSMutableArray *storesIcon = [NSMutableArray array];
+                    NSMutableArray *storesDescription = [NSMutableArray array];
+                    NSMutableArray *storesAddress = [NSMutableArray array];
+                    NSMutableArray *storesIsFavorite = [NSMutableArray array];
+                    NSMutableArray *storesPics = [NSMutableArray array];
                     
                     NSArray *stores = [list2[i] objectForKey:@"stores"];
 
@@ -151,10 +143,33 @@ static NSString *commentIdentify = @"comment";
                             NSString *headpic = [stores[j] objectForKey:@"headpic"];
                             
                             [storesHeadPic addObject:[self imageUrlDeleteImageView:headpic]];
+                            
+                            [storesTagName addObject:[((NSArray *)[stores[j] objectForKey:@"category"])[0] objectForKey:@"tag_name"]];
+                            [storesScore addObject:[stores[j] objectForKey:@"score"]];
+                            [storesIcon addObject:[self imageUrlDeleteImageView:[stores[j] objectForKey:@"icon"]]];
+                            [storesDescription addObject:[stores[j] objectForKey:@"description"]];
+                            [storesAddress addObject:[stores[j] objectForKey:@"address"]];
+                            [storesIsFavorite addObject:[stores[j] objectForKey:@"is_fav"]];
+                            
+                            NSArray *pics = [stores[j] objectForKey:@"pics"];
+                            NSMutableArray *onePics = [NSMutableArray array];
+                            
+                            for (int z = 0; z < pics.count; z++) {
+                                [onePics addObject:[self imageUrlDeleteImageView:[pics[z] objectForKey:@"url"]]];
+                            }
+                            [storesPics addObject:onePics];
                         }
+                        
                         model.storesEnglishName = storesEnglishName;
                         model.storesHeadpic = storesHeadPic;
                         model.storesName = storesName;
+                        model.storesTagName = storesTagName;
+                        model.storesScore = storesScore;
+                        model.storesIcon = storesIcon;
+                        model.storesDescription = storesDescription;
+                        model.storesAddress = storesAddress;
+                        model.storesIsFavorite = storesIsFavorite;
+                        model.storesPics = storesPics;
                     }
                     [_bizareaModelArr addObject:model];
                 }
@@ -217,7 +232,7 @@ static NSString *commentIdentify = @"comment";
     [task resume];
 }
 
-//-------------------------------以上是3个模块加载data--------------------------------
+//-------------------------------以上是3个模块加载maindata--------------------------------
 
 - (NSString *)imageUrlDeleteImageView:(NSString *)str {
 //取下来的网址是http://img01.yohomars.com/mars/2016/01/19/80d4ee3c3cbf6e8be71d7bab73dfe657.jpg?imageView/{mode}/w/{width}/h/{height}
@@ -238,23 +253,6 @@ static NSString *commentIdentify = @"comment";
     }
 }
 
-//- (void)postRequestString:(NSString *)urlString {
-//    
-//    //获取_scrollview上的专题列表data
-//    
-//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-//
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString] cachePolicy: NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
-//    
-//    request.HTTPMethod = @"POST";
-//    
-//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
-//    
-//    [task resume];
-//    
-//}
-
 #pragma mark - CreateView
 
 - (void)_createTableView {
@@ -262,6 +260,7 @@ static NSString *commentIdentify = @"comment";
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - self.tabBarController.tabBar.height - CGRectGetMinY(self.navigationController.navigationBar.frame))];
     
     _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -274,41 +273,6 @@ static NSString *commentIdentify = @"comment";
 
 }
 
-//- (void)_createScrollView:(UIView *)superView {
-//
-//    UIScrollView *_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, 80)];
-//    
-//    CGFloat imageViewWidth = kScreenWidth - 100;
-//    CGFloat spaceWidth = 10;                        //间隔宽度
-//    
-//    _scrollView.contentSize = CGSizeMake(imageViewWidth * 6 + spaceWidth * 7, 0);
-//    
-//    _scrollView.showsVerticalScrollIndicator = NO;
-//    _scrollView.showsHorizontalScrollIndicator = NO;
-//    
-//    _scrollView.backgroundColor = [UIColor clearColor];
-//    
-//    [superView addSubview:_scrollView];
-//    
-//    for (int i = 0; i < 6; i++) {
-//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageViewWidth * i + spaceWidth * (i + 1), 0, imageViewWidth, 80)];
-//        
-//        imageView.backgroundColor = [UIColor redColor];
-//        
-//        imageView.tag = 100 + i;
-//        
-//        imageView.userInteractionEnabled = YES;
-//        
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-//        
-//        [imageView addGestureRecognizer:tap];
-//        
-//        [_scrollView addSubview:imageView];
-//        
-//    }
-//
-//
-//}
 - (void)_createToplistView:(UIView *)superView withToplistModelArray:(NSArray *)modelArr {
     
     for (UIView *view in superView.subviews) {
@@ -317,14 +281,34 @@ static NSString *commentIdentify = @"comment";
         }
     }
     
-    ToplistView *toplistView = [[ToplistView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 100)];
+    ToplistView *toplistView = [[ToplistView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 120)];
     
     [superView addSubview:toplistView];
     
     toplistView.toplistModelArray = modelArr;
+
+//这里开始做block,点击事件触发时,弹出视图并且加载网络.
+        
+    toplistView.block = ^(NSString *scrollViewIndexUrlString){
+
+        [self toplistIndexDataDownload:scrollViewIndexUrlString];
+    
+    };
 }
 
 - (void)_createEyeIconView:(UIView *)superView {
+    for (UIView *view in superView.subviews) {
+        if ([view isKindOfClass:[UIView class]]) {
+            [view removeFromSuperview];
+        }
+        if ([view isKindOfClass:[UIImageView class]]) {
+            [view removeFromSuperview];
+        }
+        if ([view isKindOfClass:[UILabel class]]) {
+            [view removeFromSuperview];
+        }
+    }
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 0, kScreenWidth - 20, 40)];
     view.backgroundColor = [UIColor whiteColor];
     
@@ -361,6 +345,16 @@ static NSString *commentIdentify = @"comment";
     [superView addSubview:bizareaView];
     
     bizareaView.bizareaModel = model;
+    
+    bizareaView.bizereaStoreShowBlock = ^(NSDictionary *dic){
+        BizareaInfoController *vc = [[BizareaInfoController alloc] init];
+        vc.bizareaModel = dic[@"data"];
+        vc.indexSelect = [dic[@"index"] integerValue];
+
+        [self.navigationController pushViewController:vc animated:YES];
+        self.tabBarController.tabBar.hidden = YES;
+
+    };
 }
 
 - (void)_createCommentView:(UIView *)superView withCommentModel:(CommentModel *)model {
@@ -378,45 +372,109 @@ static NSString *commentIdentify = @"comment";
     [superView addSubview:commentView];
     
     commentView.commentModel = model;
-
-
 }
 
-#pragma mark - Tap Action
+#pragma mark - index data download
+- (void)toplistIndexDataDownload:(NSString *)urlString {
+    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+    
+        TopicInfoController *vc = [[TopicInfoController alloc] init];
+        
+    
+        
+//        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    
+            //    NSLog(@"%@",urlString);
+            NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                
+                if (!data || error) {
+                    NSLog(@"toplistIndexDataDownload中加载数据失败");
+                    return ;
+                }
+                
+                NSError *jsonError = NULL;
+                
+                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
+                
+                if (jsonError) {
+                    NSLog(@"jsonError = %@",jsonError);
+                    return;
+                }
+                if (dic) {
+                    NSDictionary *dataDic = dic[@"data"];
+                    if (dataDic) {
+                        ToplistIndexModel *model = [[ToplistIndexModel alloc] init];
+                        model.cover = [self imageUrlDeleteImageView:dataDic[@"cover"]];
+                        model.storeDescription = dataDic[@"description"];
+                        model.title = dataDic[@"title"];
+                        NSArray *stores = dataDic[@"stores"];
+                        
+                        if (stores) {
+                            NSMutableArray *storesName = [NSMutableArray array];
+                            NSMutableArray *storesEnglishName = [NSMutableArray array];
+                            NSMutableArray *storesIcon = [NSMutableArray array];
+                            NSMutableArray *storesHeadpic = [NSMutableArray array];
+                            NSMutableArray *storesScore = [NSMutableArray array];
+                            NSMutableArray *storesTagName = [NSMutableArray array];
+                            NSMutableArray *storesBizinfo = [NSMutableArray array];
+                            NSMutableArray *storesPics = [NSMutableArray array];
+                            NSMutableArray *storesDesc = [NSMutableArray array];
+                            NSMutableArray *storesAddress = [NSMutableArray array];
+                            
+                            for (int i = 0; i < stores.count; i++) {
+                                [storesDesc addObject:[stores[i] objectForKey:@"desc"]];
+                                [storesAddress addObject:[stores[i] objectForKey:@"address"]];
+                                [storesName addObject:[stores[i] objectForKey:@"store_name"]];
+                                [storesEnglishName addObject:[stores[i] objectForKey:@"store_english_name"]];
+                                [storesIcon addObject:[self imageUrlDeleteImageView:[stores[i] objectForKey:@"icon"]]];
+                                [storesHeadpic addObject:[self imageUrlDeleteImageView:[stores[i] objectForKey:@"headpic"]]];
+                                [storesScore addObject:[stores[i] objectForKey:@"score"]];
+                                [storesTagName addObject:[((NSArray *)[stores[i] objectForKey:@"category"])[0] objectForKey:@"tag_name"]];
+                                [storesBizinfo addObject:[[stores[i] objectForKey:@"bizinfo"] objectForKey:@"english_name"]];
+                                NSArray *pics = [stores[i] objectForKey:@"pics"];
+                                if (pics) {
+                                    NSMutableArray *picsArr = [NSMutableArray array];
+                                    for (int j = 0; j < pics.count; j++) {
+                                        [picsArr addObject:[self imageUrlDeleteImageView:[pics[j] objectForKey:@"url"]]];
+                                    }
+                                    [storesPics addObject:picsArr];
+                                }
+                            }
+                            model.storesName = storesName;
+                            model.storesEnglishName = storesEnglishName;
+                            model.storesIcon = storesIcon;
+                            model.storesHeadpic = storesHeadpic;
+                            model.storesScore = storesScore;
+                            model.storesTagName = storesTagName;
+                            model.storesBizinfo = storesBizinfo;
+                            model.storesPics = storesPics;
+                            model.storesDesc = storesDesc;
+                            model.storesAddress = storesAddress;
+                        }
+                       
+                        vc.toplistIndexModel = model;
+                        NSLog(@"toplistIndexDataDownload加载完数据,数据从main页面传递至topicInfo界面");
+                    }
+                }
+            }];
+            [task resume];
+            
+//        });
+        [self.navigationController pushViewController:vc animated:YES];
+//    });
+}
 
-//- (void)tapAction:(UITapGestureRecognizer *)tap {
-//
-//    for (int i = 0; i < 6; i++) {
-//        
-//        UIImageView *imageView = [self.view viewWithTag:100 + i];
-//        
-//        CGPoint point = [tap locationInView:imageView];
-//        
-//        if (point.x >= 0 && point.x <= imageView.bounds.size.width) {
-//            NSLog(@"%d",i);
-//            
-//            if (_topicModelArr.count == 0) {
-//                
-//            }
-//            else {
-//            
-//                NSString *storeID = ((ToplistModel *)_topicModelArr[i]).storeID;
-//                
-//                NSString *urlString = [NSString stringWithFormat:@"http://www.yohomars.com/api/v1/topic/topic/info?app_version=1.0.2&client_secret=%@&client_type=iphone&id=%@&os_version=9.2&screen_size=320x480&session_code=010024f105c73c448946c26bd951f6aa&v=1", [self clientSecret:storeID], storeID];
-//
-//                [self postRequestString:urlString];
-//                
-//                NSLog(@"%@",urlString);
-//
-//            }
-//        }
-//    }
-//}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self _createTableView];
+    self.navigationController.navigationBar.translucent = NO;
     
     if (_bizareaModelArr == nil) {
         _bizareaModelArr = [NSMutableArray array];
@@ -471,17 +529,25 @@ static NSString *commentIdentify = @"comment";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:commentIdentify forIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
     [self _createCommentView:cell.contentView withCommentModel:_commentModelArr[indexPath.row - _bizareaModelArr.count - 2]];
     
     return cell;
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+
+    NSLog(@"indexPath = %ld",indexPath.row);
+    
+    
+    
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if (indexPath.row == 0) {
-        return 100;
+        return 120;
     }
     if (indexPath.row == 1) {
         return 40;

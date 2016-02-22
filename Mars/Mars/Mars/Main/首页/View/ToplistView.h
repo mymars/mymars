@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void(^ToplistChooseIndexBlock)(NSString *);
 @interface ToplistView : UIView
 @property (nonatomic,copy)NSArray *toplistModelArray;
+@property (nonatomic,copy)ToplistChooseIndexBlock block;
 @end

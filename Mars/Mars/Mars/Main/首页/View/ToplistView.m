@@ -8,7 +8,6 @@
 
 #import "ToplistView.h"
 #import "ToplistModel.h"
-#import "UIImageView+WebCache.h"
 
 @implementation ToplistView
 
@@ -24,12 +23,12 @@
 
 - (void)_createScrollView:(UIView *)superView {
     
-    UIScrollView *_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, 80)];
+    UIScrollView *_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, 100)];
     
     CGFloat imageViewWidth = kScreenWidth - 100;
     CGFloat spaceWidth = 10;                        //间隔宽度
     
-    _scrollView.contentSize = CGSizeMake(imageViewWidth * 6 + spaceWidth * 7, 0);
+    _scrollView.contentSize = CGSizeMake(imageViewWidth * 5 + spaceWidth * 7, 0);
     
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
@@ -38,10 +37,8 @@
     
     [superView addSubview:_scrollView];
     
-    for (int i = 0; i < 6; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageViewWidth * i + spaceWidth * (i + 1), 0, imageViewWidth, 80)];
-        
-        imageView.backgroundColor = [UIColor redColor];
+    for (int i = 0; i < 5; i++) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageViewWidth * i + spaceWidth * (i + 1), 0, imageViewWidth, 100)];
         
         imageView.tag = 100 + i;
         
@@ -61,9 +58,9 @@
     if (toplistModelArray != _toplistModelArray) {
         _toplistModelArray = toplistModelArray;
         
-        if (toplistModelArray.count > 5) {
+        if (toplistModelArray.count > 4) {
             
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 5; i++) {
         
                 [((UIImageView *)[self viewWithTag:100 + i]) sd_setImageWithURL:[NSURL URLWithString:((ToplistModel *)_toplistModelArray[i]).cover]];
             }
@@ -73,15 +70,14 @@
 
 - (void)tapAction:(UITapGestureRecognizer *)tap {
     
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 5; i++) {
         
         UIImageView *imageView = [self viewWithTag:100 + i];
         
         CGPoint point = [tap locationInView:imageView];
         
         if (point.x >= 0 && point.x <= imageView.bounds.size.width) {
-            NSLog(@"%d",i);
-            
+      
             if (_toplistModelArray.count == 0) {
                 
             }
@@ -89,32 +85,15 @@
                 
                 NSString *storeID = ((ToplistModel *)_toplistModelArray[i]).storeID;
                 
-                NSString *urlString = [NSString stringWithFormat:@"http://www.yohomars.com/api/v1/topic/topic/info?app_version=1.1.0&client_secret=%@&client_type=iphone&id=%@&os_version=9.2.1&screen_size=320x480&session_code=010024f1a7e76318bfff7719cfe2292b&v=1", [self clientSecret:storeID], storeID];
-                
-                [self postRequestString:urlString];
-                
-                NSLog(@"%@",urlString);
-                
+                NSString *urlString = [NSString stringWithFormat:@"http://www.yohomars.com/api/v1/topic/topic/info?app_version=1.1.0&client_secret=%@&client_type=iphone&id=%@&os_version=9.2.1&screen_size=320x480&session_code=010024f1f93417b8c879922cdf649e64&v=1", [self clientSecret:storeID], storeID];
+
+//http://www.yohomars.com/api/v1/topic/topic/info?app_version=1.1.0&client_secret=%@&client_type=iphone&id=%@&os_version=9.2.1&screen_size=320x480&session_code=010024f1b6b4fded0e8cd238c4c0b42c&v=1
+                if (self.block) {
+                    self.block(urlString);
+                }
             }
         }
     }
-}
-
-- (void)postRequestString:(NSString *)urlString {
-    
-    //获取_scrollview上的专题列表data
-    
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString] cachePolicy: NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
-    
-    request.HTTPMethod = @"POST";
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
-    
-    [task resume];
-    
 }
 
 - (NSString *)clientSecret:(NSString *)storeID {
