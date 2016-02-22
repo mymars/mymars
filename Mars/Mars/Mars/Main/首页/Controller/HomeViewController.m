@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+<<<<<<< Updated upstream
 #import "ToplistModel.h"
 #import "BizareaModel.h"
 #import "CommentModel.h"
@@ -26,12 +27,16 @@ static NSString *commentIdentify = @"comment";
 @property (nonatomic,copy)NSMutableArray *bizareaModelArr;
 @property (nonatomic,copy)NSMutableArray *commentModelArr;
 @property (nonatomic,strong)UITableView *tableView;
+=======
+>>>>>>> Stashed changes
 
+@interface HomeViewController ()
 
 @end
 
 @implementation HomeViewController
 
+<<<<<<< Updated upstream
 
 /**
  *
@@ -560,9 +565,26 @@ static NSString *commentIdentify = @"comment";
 }
 
 
+=======
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+}
+
+>>>>>>> Stashed changes
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

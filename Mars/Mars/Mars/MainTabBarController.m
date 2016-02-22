@@ -38,7 +38,7 @@
     
     for (int i = 0; i < _itemNames.count; i++) {
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * i, itemHeight - 15, itemWidth, 10)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * i, itemHeight - 10, itemWidth, 10)];
         
         label.text = _itemNames[i];
         label.textColor = [UIColor whiteColor];
