@@ -9,11 +9,5 @@
 #import "BaseViewController.h"
 
 @interface DiscoverViewController : BaseViewController
-{
-    __weak IBOutlet UITableView *_tableView;
-    
-}
-
-
 
 @end

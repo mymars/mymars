@@ -46,7 +46,7 @@ static NSString *infoCellIndetifier = @"infoCellIndetifier";
 
 - (void)_createTableView {
 
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - CGRectGetMinY(self.navigationController.navigationBar.frame))];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64)];
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -260,6 +260,7 @@ static NSString *infoCellIndetifier = @"infoCellIndetifier";
     // Do any additional setup after loading the view.
     
     self.tabBarController.tabBar.hidden = YES;
+
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"button_1-_h.png"]];
 
     if (_headView == nil) {
@@ -279,7 +280,11 @@ static NSString *infoCellIndetifier = @"infoCellIndetifier";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //imageView + textlabel + _toplistIndexModel
 
-    return 1 + 1 + _toplistIndexModel.storesHeadpic.count;
+    if (_toplistIndexModel.storesHeadpic.count) {
+        
+        return 1 + 1 + _toplistIndexModel.storesHeadpic.count;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

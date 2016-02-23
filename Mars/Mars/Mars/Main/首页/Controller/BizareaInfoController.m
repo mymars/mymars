@@ -89,9 +89,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSLog(@"在bizareainfocontroller界面中遇到一个问题,导航栏和tabbar都为(null)%@%@",self.navigationController.navigationBar,self.tabBarController.tabBar);
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"button_1-_h.png"]];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    self.navigationController.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    self.navigationController.tabBarController.tabBar.hidden = NO;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

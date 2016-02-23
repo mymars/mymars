@@ -149,6 +149,7 @@ static NSString *bizareaInfoAllIndentifier = @"bizareaInfoAllIndentifier";
         
         [tableView reloadData];
     }
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
