@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170CEE701C759D9600B139C2 /* MyNavugationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170CEE6F1C759D9600B139C2 /* MyNavugationController.m */; };
+		170CEE741C75B4B300B139C2 /* HeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 170CEE731C75B4B300B139C2 /* HeadView.xib */; };
+		170CEE771C75B68F00B139C2 /* MyHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 170CEE761C75B68F00B139C2 /* MyHeadView.m */; };
+		170CEE7B1C75C3F200B139C2 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 170CEE7A1C75C3F200B139C2 /* ImageCell.m */; };
+		170CEE7D1C75C40600B139C2 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 170CEE7C1C75C40600B139C2 /* ImageCell.xib */; };
+		170CEE811C75C53000B139C2 /* LabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 170CEE7F1C75C53000B139C2 /* LabelCell.m */; };
+		170CEE821C75C53000B139C2 /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 170CEE801C75C53000B139C2 /* LabelCell.xib */; };
+		175F70F41C76E8F400C4996F /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 175F70F21C76E8F400C4996F /* SettingTableViewCell.m */; };
+		175F70F51C76E8F400C4996F /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175F70F31C76E8F400C4996F /* SettingTableViewCell.xib */; };
+		17EB1AFB1C76C469004F1C45 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EB1AFA1C76C469004F1C45 /* SettingViewController.m */; };
 		8F17D8E81C5B622700952682 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F17D8C81C5B622700952682 /* MKAnnotationView+WebCache.m */; };
 		8F17D8E91C5B622700952682 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F17D8CA1C5B622700952682 /* NSData+ImageContentType.m */; };
 		8F17D8EA1C5B622700952682 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F17D8CC1C5B622700952682 /* SDImageCache.m */; };
@@ -664,6 +674,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		170CEE6E1C759D9600B139C2 /* MyNavugationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavugationController.h; sourceTree = "<group>"; };
+		170CEE6F1C759D9600B139C2 /* MyNavugationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavugationController.m; sourceTree = "<group>"; };
+		170CEE731C75B4B300B139C2 /* HeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadView.xib; sourceTree = "<group>"; };
+		170CEE751C75B68F00B139C2 /* MyHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyHeadView.h; path = ../Controller/MyHeadView.h; sourceTree = "<group>"; };
+		170CEE761C75B68F00B139C2 /* MyHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyHeadView.m; path = ../Controller/MyHeadView.m; sourceTree = "<group>"; };
+		170CEE791C75C3F200B139C2 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
+		170CEE7A1C75C3F200B139C2 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
+		170CEE7C1C75C40600B139C2 /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		170CEE7E1C75C53000B139C2 /* LabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelCell.h; sourceTree = "<group>"; };
+		170CEE7F1C75C53000B139C2 /* LabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelCell.m; sourceTree = "<group>"; };
+		170CEE801C75C53000B139C2 /* LabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
+		175F70F11C76E8F400C4996F /* SettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
+		175F70F21C76E8F400C4996F /* SettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
+		175F70F31C76E8F400C4996F /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		17EB1AF91C76C469004F1C45 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		17EB1AFA1C76C469004F1C45 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		8F17D8C71C5B622700952682 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		8F17D8C81C5B622700952682 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		8F17D8C91C5B622700952682 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -1696,6 +1722,10 @@
 			children = (
 				8FF088531C5A08750035D6CE /* MyViewController.h */,
 				8FF088541C5A08750035D6CE /* MyViewController.m */,
+				17EB1AF91C76C469004F1C45 /* SettingViewController.h */,
+				17EB1AFA1C76C469004F1C45 /* SettingViewController.m */,
+				170CEE6E1C759D9600B139C2 /* MyNavugationController.h */,
+				170CEE6F1C759D9600B139C2 /* MyNavugationController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1711,6 +1741,18 @@
 			isa = PBXGroup;
 			children = (
 				8FF083EA1C5A06410035D6CE /* My.storyboard */,
+				170CEE751C75B68F00B139C2 /* MyHeadView.h */,
+				170CEE761C75B68F00B139C2 /* MyHeadView.m */,
+				170CEE731C75B4B300B139C2 /* HeadView.xib */,
+				170CEE791C75C3F200B139C2 /* ImageCell.h */,
+				170CEE7A1C75C3F200B139C2 /* ImageCell.m */,
+				170CEE7C1C75C40600B139C2 /* ImageCell.xib */,
+				170CEE7E1C75C53000B139C2 /* LabelCell.h */,
+				170CEE7F1C75C53000B139C2 /* LabelCell.m */,
+				170CEE801C75C53000B139C2 /* LabelCell.xib */,
+				175F70F11C76E8F400C4996F /* SettingTableViewCell.h */,
+				175F70F21C76E8F400C4996F /* SettingTableViewCell.m */,
+				175F70F31C76E8F400C4996F /* SettingTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2593,6 +2635,7 @@
 				8F4ECED21C754ED10053EA1F /* ToplistIndexView.xib in Resources */,
 				8FF086F41C5A06990035D6CE /* publish_lbs_null.png in Resources */,
 				8FF0862C1C5A06990035D6CE /* button_1-_d.png in Resources */,
+				170CEE821C75C53000B139C2 /* LabelCell.xib in Resources */,
 				8FF087EA1C5A06990035D6CE /* share_back_normal_icon@2x.png in Resources */,
 				8FF087B11C5A06990035D6CE /* route_6.png in Resources */,
 				8FF086B81C5A06990035D6CE /* publish_at_normal_icon.png in Resources */,
@@ -2721,6 +2764,7 @@
 				8FF0873D1C5A06990035D6CE /* pulish_filter_beijing.png in Resources */,
 				8FF0883B1C5A06990035D6CE /* web_right_highlight@2x.png in Resources */,
 				8FF086A51C5A06990035D6CE /* photo_mask-h480.png in Resources */,
+				170CEE7D1C75C40600B139C2 /* ImageCell.xib in Resources */,
 				8FF0873B1C5A06990035D6CE /* pulish_filter_bangkok.png in Resources */,
 				8FF088221C5A06990035D6CE /* towards-right.png in Resources */,
 				8FF088181C5A06990035D6CE /* tee.png in Resources */,
@@ -2740,12 +2784,14 @@
 				8FF087D21C5A06990035D6CE /* score_5.png in Resources */,
 				8FF0882C1C5A06990035D6CE /* vertifycode_send_02.png in Resources */,
 				8FF087C41C5A06990035D6CE /* s_location_ic.png in Resources */,
+				175F70F51C76E8F400C4996F /* SettingTableViewCell.xib in Resources */,
 				8FF087051C5A06990035D6CE /* publish_photos_highlighted.png in Resources */,
 				8FF086A61C5A06990035D6CE /* photo_mask-h568.png in Resources */,
 				8FF086C21C5A06990035D6CE /* publish_category_accs_normal_icon@2x.png in Resources */,
 				8FF087041C5A06990035D6CE /* publish_photopicker_normal.png in Resources */,
 				8FF087BF1C5A06990035D6CE /* rubbish_ic.png in Resources */,
 				8FF086771C5A06990035D6CE /* loading18.png in Resources */,
+				170CEE741C75B4B300B139C2 /* HeadView.xib in Resources */,
 				8FF086AC1C5A06990035D6CE /* public_next_normal_icon.png in Resources */,
 				8FF0863C1C5A06990035D6CE /* comment.png in Resources */,
 				8FF087621C5A06990035D6CE /* pulish_framephoto_2.png in Resources */,
@@ -3105,7 +3151,11 @@
 				8FEFF9C31C7B28B500918B0A /* MJRefreshStateHeader.m in Sources */,
 				8FEFF9BB1C7B28B500918B0A /* MJRefreshAutoGifFooter.m in Sources */,
 				8F4ECEC01C7207D00053EA1F /* CommentView.m in Sources */,
+<<<<<<< Updated upstream
 				8FEFF8B61C7A0AA000918B0A /* BizareaInfoAllTableView.m in Sources */,
+=======
+				17EB1AFB1C76C469004F1C45 /* SettingViewController.m in Sources */,
+>>>>>>> Stashed changes
 				8FF088551C5A08750035D6CE /* MyViewController.m in Sources */,
 				8F17D8F01C5B622700952682 /* SDWebImagePrefetcher.m in Sources */,
 				8FF0884F1C5A08650035D6CE /* TrendsViewController.m in Sources */,
@@ -3119,15 +3169,22 @@
 				8FEFF9B61C7B28B500918B0A /* MJRefreshAutoFooter.m in Sources */,
 				8FEFF8B01C7A07A300918B0A /* BizareaInfoController.m in Sources */,
 				8FF0884C1C5A08590035D6CE /* DiscoverViewController.m in Sources */,
+				175F70F41C76E8F400C4996F /* SettingTableViewCell.m in Sources */,
 				8FF083D41C5A04200035D6CE /* BaseNaviController.m in Sources */,
+<<<<<<< Updated upstream
 				8FEFF8B31C7A0A8D00918B0A /* BizareaInfoOneTableView.m in Sources */,
+=======
+				170CEE771C75B68F00B139C2 /* MyHeadView.m in Sources */,
+>>>>>>> Stashed changes
 				8F17D9071C60903B00952682 /* BizareaView.m in Sources */,
 				8FEFF9C81C7B28B500918B0A /* UIView+MJExtension.m in Sources */,
 				8FEFF9C51C7B28B500918B0A /* MJRefreshConst.m in Sources */,
 				8F17D8F11C5B622700952682 /* UIButton+WebCache.m in Sources */,
 				8FEFF9BE1C7B28B500918B0A /* MJRefreshBackGifFooter.m in Sources */,
 				8F17D8EE1C5B622700952682 /* SDWebImageDownloaderOperation.m in Sources */,
+				170CEE7B1C75C3F200B139C2 /* ImageCell.m in Sources */,
 				8F17D9041C608E0400952682 /* BizareaModel.m in Sources */,
+				170CEE701C759D9600B139C2 /* MyNavugationController.m in Sources */,
 				8F17D8E81C5B622700952682 /* MKAnnotationView+WebCache.m in Sources */,
 				8F4ECED01C754EA10053EA1F /* ToplistIndexView.m in Sources */,
 				8F4ECED81C7550A00053EA1F /* TopicInfoController.m in Sources */,
@@ -3157,6 +3214,7 @@
 				8FEFF9BC1C7B28B500918B0A /* MJRefreshAutoNormalFooter.m in Sources */,
 				8F17D8EF1C5B622700952682 /* SDWebImageManager.m in Sources */,
 				8F17D90C1C60923D00952682 /* UIView+ext.m in Sources */,
+				170CEE811C75C53000B139C2 /* LabelCell.m in Sources */,
 				8FF088491C5A084A0035D6CE /* HomeViewController.m in Sources */,
 				8FEFF9BA1C7B28B500918B0A /* MJRefreshHeader.m in Sources */,
 				8FF083871C5A020B0035D6CE /* main.m in Sources */,
