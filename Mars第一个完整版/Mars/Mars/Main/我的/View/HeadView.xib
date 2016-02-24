@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="vr9-VZ-eRi" customClass="MyHeadView">
+            <rect key="frame" x="0.0" y="0.0" width="505" height="461"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="ebQ-MU-PLI">
+                    <rect key="frame" x="0.0" y="-20" width="505" height="337"/>
+                    <animations/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moren_head.png" translatesAutoresizingMaskIntoConstraints="NO" id="1aq-Zd-ZdX">
+                    <rect key="frame" x="168" y="177" width="170" height="170"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="1aq-Zd-ZdX" secondAttribute="height" id="lKn-6S-0Xi"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldJ-pN-cAk">
+                    <rect key="frame" x="100" y="0.0" width="305" height="177"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="好人一生平安" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlk-Xo-eIw">
+                    <rect key="frame" x="0.0" y="422" width="505" height="28"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qlk-Xo-eIw" secondAttribute="bottom" constant="11" id="4jt-3N-YTD"/>
+                <constraint firstItem="1aq-Zd-ZdX" firstAttribute="centerX" secondItem="vr9-VZ-eRi" secondAttribute="centerX" id="4n4-YY-FU7"/>
+                <constraint firstAttribute="trailing" secondItem="qlk-Xo-eIw" secondAttribute="trailing" id="5pK-iR-kdm"/>
+                <constraint firstAttribute="trailing" secondItem="ldJ-pN-cAk" secondAttribute="trailing" constant="100" id="8bT-TG-Htf"/>
+                <constraint firstItem="ldJ-pN-cAk" firstAttribute="top" secondItem="vr9-VZ-eRi" secondAttribute="top" id="A72-OR-zKM"/>
+                <constraint firstItem="ebQ-MU-PLI" firstAttribute="height" secondItem="vr9-VZ-eRi" secondAttribute="height" multiplier="342/468" id="BwT-RG-Mnc"/>
+                <constraint firstAttribute="trailing" secondItem="ebQ-MU-PLI" secondAttribute="trailing" id="JGv-km-bfK"/>
+                <constraint firstItem="qlk-Xo-eIw" firstAttribute="leading" secondItem="vr9-VZ-eRi" secondAttribute="leading" id="TFS-8W-Bw7"/>
+                <constraint firstItem="ldJ-pN-cAk" firstAttribute="leading" secondItem="vr9-VZ-eRi" secondAttribute="leading" constant="100" id="X4y-nd-aNN"/>
+                <constraint firstItem="1aq-Zd-ZdX" firstAttribute="width" secondItem="vr9-VZ-eRi" secondAttribute="width" identifier="172/750" id="YNP-Lf-YuU"/>
+                <constraint firstItem="ldJ-pN-cAk" firstAttribute="height" secondItem="vr9-VZ-eRi" secondAttribute="height" multiplier="180/468" id="ZtK-O2-TXC"/>
+                <constraint firstItem="1aq-Zd-ZdX" firstAttribute="top" secondItem="ldJ-pN-cAk" secondAttribute="bottom" id="bUF-Ym-VYl"/>
+                <constraint firstItem="1aq-Zd-ZdX" firstAttribute="height" secondItem="vr9-VZ-eRi" secondAttribute="height" multiplier="172/468" id="j8W-JC-g4X"/>
+                <constraint firstItem="ebQ-MU-PLI" firstAttribute="top" secondItem="vr9-VZ-eRi" secondAttribute="top" constant="-20" id="jsb-aR-UBU"/>
+                <constraint firstItem="ebQ-MU-PLI" firstAttribute="leading" secondItem="vr9-VZ-eRi" secondAttribute="leading" id="nm7-SP-Iaj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="YNP-Lf-YuU"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="avatarView" destination="1aq-Zd-ZdX" id="Aap-X2-XUe"/>
+                <outlet property="bgImageView" destination="ebQ-MU-PLI" id="NTk-Oi-5fn"/>
+                <outlet property="nameLabel" destination="qlk-Xo-eIw" id="Qwp-rc-Y5G"/>
+            </connections>
+            <point key="canvasLocation" x="494.5" y="516.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="mine_bg.png" width="750" height="312"/>
+        <image name="moren_head.png" width="170" height="170"/>
+    </resources>
+</document>
