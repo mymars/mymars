@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="142" id="kut-fe-CPj" customClass="ImageCell">
+            <rect key="frame" x="0.0" y="0.0" width="545" height="142"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kut-fe-CPj" id="nM1-Fd-amL">
+                <rect key="frame" x="0.0" y="0.0" width="545" height="141"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifi-PT-YEd">
+                        <rect key="frame" x="155" y="106" width="44" height="22"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxo-aO-IDi">
+                        <rect key="frame" x="25" y="139" width="520" height="2"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="tPt-vk-TSI"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="area_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Orx-BT-35F">
+                        <rect key="frame" x="28" y="13" width="115" height="115"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Orx-BT-35F" secondAttribute="height" id="U7F-fr-ffO"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="bxo-aO-IDi" secondAttribute="bottom" constant="-8" id="5q1-U9-oYt"/>
+                    <constraint firstItem="bxo-aO-IDi" firstAttribute="trailing" secondItem="nM1-Fd-amL" secondAttribute="trailingMargin" constant="8" id="BHb-w4-UNj"/>
+                    <constraint firstItem="ifi-PT-YEd" firstAttribute="leading" secondItem="Orx-BT-35F" secondAttribute="trailing" constant="12" id="JPE-lU-AAq"/>
+                    <constraint firstItem="Orx-BT-35F" firstAttribute="leading" secondItem="nM1-Fd-amL" secondAttribute="leadingMargin" constant="20" id="Mgf-Gk-sdB"/>
+                    <constraint firstItem="ifi-PT-YEd" firstAttribute="centerY" secondItem="Orx-BT-35F" secondAttribute="centerY" id="QqV-Aj-wnW"/>
+                    <constraint firstItem="bxo-aO-IDi" firstAttribute="leading" secondItem="nM1-Fd-amL" secondAttribute="leadingMargin" constant="17" id="UZs-e5-bZg"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Orx-BT-35F" secondAttribute="bottom" constant="5" id="YNd-hS-Ho4"/>
+                    <constraint firstItem="Orx-BT-35F" firstAttribute="top" secondItem="nM1-Fd-amL" secondAttribute="topMargin" constant="5" id="dgk-m0-p1r"/>
+                    <constraint firstItem="ifi-PT-YEd" firstAttribute="bottom" secondItem="Orx-BT-35F" secondAttribute="bottom" id="voH-ll-UMd"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="QqV-Aj-wnW"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="tyImageView" destination="Orx-BT-35F" id="b8J-kT-S9D"/>
+                <outlet property="tyLabel" destination="ifi-PT-YEd" id="8Rm-CC-v9l"/>
+            </connections>
+            <point key="canvasLocation" x="509.5" y="363"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="area_icon.png" width="48" height="41"/>
+    </resources>
+</document>
