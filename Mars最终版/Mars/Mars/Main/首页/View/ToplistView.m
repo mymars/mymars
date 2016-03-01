@@ -85,9 +85,8 @@
                 
                 NSString *storeID = ((ToplistModel *)_toplistModelArray[i]).storeID;
                 
-                NSString *urlString = [NSString stringWithFormat:@"http://www.yohomars.com/api/v1/topic/topic/info?app_version=1.1.0&client_secret=%@&client_type=iphone&id=%@&os_version=9.2.1&screen_size=320x480&session_code=010024f1f93417b8c879922cdf649e64&v=1", [self clientSecret:storeID], storeID];
+                NSString *urlString = [self createUrlStringByCityNameWithStoreID:storeID];
 
-//http://www.yohomars.com/api/v1/topic/topic/info?app_version=1.1.0&client_secret=%@&client_type=iphone&id=%@&os_version=9.2.1&screen_size=320x480&session_code=010024f1b6b4fded0e8cd238c4c0b42c&v=1
                 if (self.block) {
                     self.block(urlString);
                 }
@@ -96,9 +95,35 @@
     }
 }
 
-- (NSString *)clientSecret:(NSString *)storeID {
+//这个方法还没写完,用来实现传入参数,传出urlString
+- (NSString *)createUrlStringByCityNameWithStoreID:(NSString *)storeID {
+
+    NSString *city = [[NSUserDefaults standardUserDefaults] objectForKey:kCityChoosed];
+    NSString *cityPlist;
+    NSString *urlString;
     
-    NSDictionary *dicConfig = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ClientSecretShangHai.plist" ofType:nil]];
+    if ([city isEqualToString:@"北京"]) {
+        cityPlist = @"ClientSecretBeiJing.plist";
+        urlString = [NSString stringWithFormat:@"http://www.yohomars.com/api/v1/topic/topic/info?app_version=1.1.0&client_secret=%@&client_type=iphone&id=%@&os_version=9.2.1&screen_size=320x480&session_code=010024f1c538ebbfe24b67b073c42fc5&v=1",[self clientSecret:storeID cityPlist:cityPlist],storeID];
+    }
+    else if ([city isEqualToString:@"上海"]) {
+    
+        cityPlist = @"ClientSecretShangHai.plist";
+        urlString = [NSString stringWithFormat:@"http://www.yohomars.com/api/v1/topic/topic/info?app_version=1.1.0&client_secret=%@&client_type=iphone&id=%@&os_version=9.2.1&screen_size=320x480&session_code=010024f1f223c53700c9c693a20cc38c&v=1",[self clientSecret:storeID cityPlist:cityPlist],storeID];
+        
+    }
+    else if ([city isEqualToString:@"东京"]) {
+    
+    }
+    else {
+    
+    }
+    return urlString;
+}
+
+- (NSString *)clientSecret:(NSString *)storeID cityPlist:(NSString *)cityPlist{
+    
+    NSDictionary *dicConfig = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:cityPlist ofType:nil]];
     
     NSString *str = dicConfig[storeID];
     

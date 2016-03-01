@@ -194,7 +194,7 @@
                 <outlet property="_label8" destination="eWb-kh-9Y0" id="Dbg-SZ-JyW"/>
                 <outlet property="_label9" destination="V27-Sk-n64" id="XMh-mE-POW"/>
             </connections>
-            <point key="canvasLocation" x="100" y="373"/>
+            <point key="canvasLocation" x="246" y="331"/>
         </tableViewCell>
     </objects>
 </document>

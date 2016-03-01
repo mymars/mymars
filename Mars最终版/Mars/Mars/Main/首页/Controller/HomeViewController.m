@@ -319,6 +319,8 @@ static NSString *commentIdentify = @"comment";
         _locationName = @"首尔";
 
     }
+    [[NSUserDefaults standardUserDefaults] setObject:_locationName forKey:kCityChoosed];
+    
     [self baseCityNameDownloadData:_locationName];
     
     button.superview.hidden = YES;
@@ -329,7 +331,6 @@ static NSString *commentIdentify = @"comment";
     
     [self _createChooseCityNaviBarButton];
     
-    [[NSUserDefaults standardUserDefaults] setObject:_locationName forKey:kCityChoosed];
 
     
 //    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerActionFirstDownload:) userInfo:nil repeats:YES];

@@ -78,6 +78,7 @@ static NSString *bizareaInfoAllIndentifier = @"bizareaInfoAllIndentifier";
     [superView addSubview:whiteView];
 
     ChangingHeightLabel *desc = [[ChangingHeightLabel alloc] initWithFrame:CGRectMake(0, 130, kScreenWidth, 65) withString:_model.placeDesc withFlag:_isClick withSuperView:superView];
+    
 }
 
 - (void)_createIndexPath1WithView:(UIView *)superView withIndexPath:(NSInteger)indexPathRow{

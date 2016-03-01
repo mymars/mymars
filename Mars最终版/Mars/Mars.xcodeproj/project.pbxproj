@@ -86,6 +86,7 @@
 		8F96FD761C7C3D4700E8DB21 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F96FD501C7C3D4700E8DB21 /* MyCell.m */; };
 		8F96FD771C7C3D4700E8DB21 /* MyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F96FD511C7C3D4700E8DB21 /* MyCell.xib */; };
 		8F96FD781C7C3D4700E8DB21 /* MyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F96FD531C7C3D4700E8DB21 /* MyScrollView.m */; };
+		8FA8BFB11C84A24A00948424 /* ClientSecretBeiJing.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FA8BFB01C84A24A00948424 /* ClientSecretBeiJing.plist */; };
 		8FEFF8B01C7A07A300918B0A /* BizareaInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEFF8AF1C7A07A300918B0A /* BizareaInfoController.m */; };
 		8FEFF8B31C7A0A8D00918B0A /* BizareaInfoOneTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEFF8B21C7A0A8D00918B0A /* BizareaInfoOneTableView.m */; };
 		8FEFF8B61C7A0AA000918B0A /* BizareaInfoAllTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEFF8B51C7A0AA000918B0A /* BizareaInfoAllTableView.m */; };
@@ -848,6 +849,7 @@
 		8F96FD511C7C3D4700E8DB21 /* MyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCell.xib; sourceTree = "<group>"; };
 		8F96FD521C7C3D4700E8DB21 /* MyScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyScrollView.h; sourceTree = "<group>"; };
 		8F96FD531C7C3D4700E8DB21 /* MyScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyScrollView.m; sourceTree = "<group>"; };
+		8FA8BFB01C84A24A00948424 /* ClientSecretBeiJing.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClientSecretBeiJing.plist; sourceTree = "<group>"; };
 		8FEFF8AE1C7A07A300918B0A /* BizareaInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BizareaInfoController.h; sourceTree = "<group>"; };
 		8FEFF8AF1C7A07A300918B0A /* BizareaInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BizareaInfoController.m; sourceTree = "<group>"; };
 		8FEFF8B11C7A0A8D00918B0A /* BizareaInfoOneTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BizareaInfoOneTableView.h; sourceTree = "<group>"; };
@@ -2414,6 +2416,7 @@
 				8FF083881C5A020B0035D6CE /* AppDelegate.h */,
 				8FF083891C5A020B0035D6CE /* AppDelegate.m */,
 				8F4ECEC91C7469D10053EA1F /* ClientSecretShangHai.plist */,
+				8FA8BFB01C84A24A00948424 /* ClientSecretBeiJing.plist */,
 				8FF083DF1C5A05240035D6CE /* MainTabBarController.h */,
 				8FF083E01C5A05240035D6CE /* MainTabBarController.m */,
 				8FF0838B1C5A020B0035D6CE /* ViewController.h */,
@@ -3254,6 +3257,7 @@
 				8FEFFC621C7C485F00918B0A /* gz_arrow.png in Resources */,
 				8FEFFD3B1C7C485F00918B0A /* publish_video_down_button.png in Resources */,
 				8FEFFD7E1C7C485F00918B0A /* pulish_framephoto_4_h568.png in Resources */,
+				8FA8BFB11C84A24A00948424 /* ClientSecretBeiJing.plist in Resources */,
 				8FEFFE221C7C485F00918B0A /* tb_eye_n.png in Resources */,
 				8FEFFDD61C7C485F00918B0A /* s_friends-circle_n.png in Resources */,
 				8FEFFD8E1C7C485F00918B0A /* pulish_photo_frame_1.png in Resources */,

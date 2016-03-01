@@ -103,13 +103,13 @@
      */
     
     if (!_storePic1.hidden) {
-        [pics addObject:_storePic1.image];
+        [pics addObject:_storePic1.image ? _storePic1.image : [NSNull null]];
     }
     if (!_storePic2.hidden) {
-        [pics addObject:_storePic2.image];
+        [pics addObject:_storePic2.image ? _storePic2.image : [NSNull null]];
     }
     if (!_storePic3.hidden) {
-        [pics addObject:_storePic3.image];
+        [pics addObject:_storePic3.image ? _storePic3.image : [NSNull null]];
     }
     NSString *address = _toplistIndexModel.storesAddress[_indexCount];
 

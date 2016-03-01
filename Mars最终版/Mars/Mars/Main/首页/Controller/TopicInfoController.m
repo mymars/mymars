@@ -170,7 +170,11 @@ static NSString *infoCellIndetifier = @"infoCellIndetifier";
     
     for (int i = 0; i < pics.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5 + kScreenWidth * i, (kScreenHeight - 300 - 160) / 2.0, kScreenWidth - 10, 300)];
-        imageView.image = pics[i];
+        
+        if (![pics[i] isKindOfClass:[NSNull class]]) {
+            
+            imageView.image = pics[i];
+        }
         
         [scrollView addSubview:imageView];
         
