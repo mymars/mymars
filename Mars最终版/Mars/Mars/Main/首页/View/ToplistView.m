@@ -109,7 +109,7 @@
     else if ([city isEqualToString:@"上海"]) {
 
         cityPlist = @"ClientSecretShangHai.plist";
-        urlString = [NSString stringWithFormat:@"http://www.yohomars.com/api/v1/topic/topic/info?app_version=1.1.0&client_secret=%@&client_type=iphone&id=%@&os_version=9.2.1&screen_size=320x480&session_code=010024f1ee6b936362155890425d1157&v=1",[self clientSecret:storeID cityPlist:cityPlist],storeID];
+        urlString = [NSString stringWithFormat:@"http://www.yohomars.com/api/v1/topic/topic/info?app_version=1.1.0&client_secret=%@&client_type=iphone&id=%@&os_version=9.2.1&screen_size=320x480&session_code=010024f116d1348cdb11bb7ab12db06a&v=1",[self clientSecret:storeID cityPlist:cityPlist],storeID];
         
     }
     else if ([city isEqualToString:@"东京"]) {

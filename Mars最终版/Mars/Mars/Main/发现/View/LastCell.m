@@ -24,22 +24,25 @@
     if (arr4 != _arr4) {
         _arr4 = arr4;
         Model4 *model = [[Model4 alloc] init];
+        if (arr4.count > 3) {
+            
+            model = arr4[0];
+            
+            [_imageView1 sd_setImageWithURL:[NSURL URLWithString:model.imageName]];
+            
+            model = arr4[1];
+            
+            [_imageView2 sd_setImageWithURL:[NSURL URLWithString:model.imageName]];
+            
+            model = arr4[2];
+            
+            [_imageView3 sd_setImageWithURL:[NSURL URLWithString:model.imageName]];
+            
+            model = arr4[3];
+            
+            [_imageView4 sd_setImageWithURL:[NSURL URLWithString:model.imageName]];
+        }
         
-        model = arr4[0];
-
-        [_imageView1 sd_setImageWithURL:[NSURL URLWithString:model.imageName]];
-        
-        model = arr4[1];
-
-        [_imageView2 sd_setImageWithURL:[NSURL URLWithString:model.imageName]];
-        
-        model = arr4[2];
-
-        [_imageView3 sd_setImageWithURL:[NSURL URLWithString:model.imageName]];
-        
-        model = arr4[3];
-
-        [_imageView4 sd_setImageWithURL:[NSURL URLWithString:model.imageName]];
     }
 }
 @end
